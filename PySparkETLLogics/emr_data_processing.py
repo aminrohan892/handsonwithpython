@@ -116,7 +116,7 @@ def process_gz_files(source_bucket, source_folder, destination_bucket, destinati
     json_df3.repartition(5).write.partitionBy("date").parquet(f"s3://{destination_bucket}/{destination_folder}", "append")
     spark.stop()
 
-start_date = datetime(2021, 1, 18)
+start_date = datetime(2023, 1, 1)
 end_date = datetime(2024, 3, 15)
 current_date = start_date
 while current_date <= end_date:
@@ -136,4 +136,4 @@ while current_date <= end_date:
     current_date += timedelta(days=1)
 
 # Spark Submit Command
-spark-submit --master yarn --deploy-mode client --executor-memory 2g --num-executors 2 load_raw_amplitude_events.py
+spark-submit --master yarn --deploy-mode client --executor-memory 10g --num-executors 20 load_raw_amplitude_events.py
