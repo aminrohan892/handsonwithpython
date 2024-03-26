@@ -116,8 +116,8 @@ def process_gz_files(source_bucket, source_folder, destination_bucket, destinati
     json_df3.repartition(5).write.partitionBy("date").parquet(f"s3://{destination_bucket}/{destination_folder}", "append")
     spark.stop()
 
-start_date = datetime(2023, 1, 1)
-end_date = datetime(2024, 3, 15)
+start_date = datetime(2023, 5, 9)
+end_date = datetime(2021, 12, 31)
 current_date = start_date
 while current_date <= end_date:
     try:
